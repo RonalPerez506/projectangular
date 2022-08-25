@@ -1,0 +1,103 @@
+<div class="container">
+  <h1>Create New Post</h1>
+
+  <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['name'].touched && f['name'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['name'].errors && f['name'].errors['required']">
+          Title is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Apellido</label>
+      <textarea
+        formControlName="lastname"
+        id="lastname"
+        type="text"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['lastname'].touched && f['lastname'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">
+          Body is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cel">Telefono</label>
+      <textarea
+        formControlName="cel"
+        id="cel"
+        type="number"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['cel'].touched && f['cel'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['cel'].errors && f['cel'].errors['required']">
+          Body is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <textarea
+        formControlName="email"
+        id="email"
+        type="text"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['email'].touched && f['email'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['email'].errors && f['email'].errors['required']">
+          Body is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nit">NIT</label>
+      <textarea
+        formControlName="nit"
+        id="nit"
+        type="number"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['nit'].touched && f['nit'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['nit'].errors && f['nit'].errors['required']">
+          Body is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
+</div>
