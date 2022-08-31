@@ -38,23 +38,26 @@ export class PostService {
   }  
     
   find(id: any): Observable<Post> {
-    return this.httpClient.get<Post>(this.apiURL + '/clients' + id)
+    return this.httpClient.get<Post>(this.apiURL + '/clients/' + id)
     .pipe(
       catchError(this.errorHandler)
     )
   }
     
-  update(id: any, post: any): Observable<Post> {
-    console.log("----------------error 1----------------------");
+  update(id: number, post: Post): Observable<Post> {
+    // console.log("----------------error 1----------------------");
+    // console.log(post);
+
     return this.httpClient.put<Post>(this.apiURL + '/clients/' + id, JSON.stringify(post), this.httpOptions)
     .pipe(
-      catchError(this.errorHandler)
+      catchError(this.errorHandler),
     )
-    console.log("----------------url api----------------------");
+    // console.log(post);
+    
   }
     
   delete(id: any){
-    return this.httpClient.delete<Post>(this.apiURL + '/clients' + id, this.httpOptions)
+    return this.httpClient.delete<Post>(this.apiURL + '/clients/' + id, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )

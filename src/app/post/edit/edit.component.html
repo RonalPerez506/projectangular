@@ -1,9 +1,15 @@
+<script
+  src="https://kit.fontawesome.com/561f10f14e.js"
+  crossorigin="anonymous"
+></script>
 <div class="container">
-  <h1>Update Post</h1>
+  <h1>Actualizar datos de cliente</h1>
 
-  <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+  <a href="#" routerLink="/post/index" class="btn btn-success"
+    ><i class="fa-solid fa-angles-left"> Back</i></a
+  >
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Nombre:</label>
       <input
@@ -18,27 +24,26 @@
         class="alert alert-danger"
       >
         <div *ngIf="f['name'].errors && f['name'].errors['required']">
-          Title is required.
+          El nombre es obligatorio.
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <label for="lastname">Apellido:</label>
-      <textarea
+      <input
         formControlName="lastname"
         id="lastname"
         type="text"
         [(ngModel)]="post.lastname"
         class="form-control"
-      >
-      </textarea>
+      />
       <div
         *ngIf="f['lastname'].touched && f['lastname'].invalid"
         class="alert alert-danger"
       >
         <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">
-          Body is required.
+          Title is required.
         </div>
       </div>
     </div>

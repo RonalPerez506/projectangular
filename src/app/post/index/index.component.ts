@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
 import { Post } from '../post';
        
 @Component({
@@ -16,7 +17,12 @@ export class IndexComponent implements OnInit {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(public postService: PostService) { }
+  constructor(
+
+    public postService: PostService,
+    private router: Router
+
+    ) { }
      
   /**
    * Write code on Method
@@ -26,9 +32,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.postService.getAll().subscribe((data: Post[])=>{
       this.posts = data;
-      console.log("-------------------hola2-------------------");
-      console.log(this.posts);
-      console.log("-------------------hola1-------------------");
+      // console.log(this.posts);
     })  
   }
      
@@ -43,5 +47,14 @@ export class IndexComponent implements OnInit {
          console.log('Post deleted successfully!');
     })
   }
+
+  editPost(id:number){
+    console.log("---------error desde index.component.ts1: "+id);
+    this.router.navigateByUrl('post/' + id + '/edit');
+    console.log("---------error desde index.component.ts2: "+id);
+  }
+
+  
+  
      
 }

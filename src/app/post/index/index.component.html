@@ -1,15 +1,19 @@
+<script
+  src="https://kit.fontawesome.com/561f10f14e.js"
+  crossorigin="anonymous"
+></script>
 <div class="container">
-  <h1>Angular 13 CRUD Example - Tutsmake.com</h1>
+  <h1>Lista de clientes</h1>
 
   <a href="#" routerLink="/post/create/" class="btn btn-success"
-    >Create New Post</a
-  >
+    >Agregar cliente <i class="fa-solid fa-circle-plus"></i
+  ></a>
 
-  <table class="table table-bordered">
+  <table class="table table-sm">
     <tr>
       <th>ID</th>
       <th>Nombre</th>
-      <th>Apellido</th>
+      <!-- <th>Apellido</th> -->
       <th>Telefono</th>
       <th>Email</th>
       <th>NIT</th>
@@ -17,32 +21,44 @@
     </tr>
     <tr *ngFor="let post of posts">
       <td>{{ post.id }}</td>
-      <td>{{ post.name }}</td>
-      <td>{{ post.lastname }}</td>
+      <td>{{ post.name + " " + post.lastname }}</td>
+      <!-- <td>{{ post.lastname }}</td> -->
       <td>{{ post.cel }}</td>
       <td>{{ post.email }}</td>
       <td>{{ post.nit }}</td>
       <td>
-        <a
+        <!-- <a
           href="#"
           [routerLink]="['/post/', post.id, 'view']"
           class="btn btn-info"
-          >View</a
-        >
-        <a
-          href="#"
-          [routerLink]="['/post/', post.id, 'edit']"
-          class="btn btn-primary"
-          >Edit</a
-        >
-        <button
-          type="button"
-          (click)="deletePost(post.id)"
-          class="btn btn-danger"
-        >
-          Delete
-        </button>
+          >Ver</a
+        > -->
+
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button
+            [routerLink]="['/post/', post.id, 'view']"
+            class="btn btn-success"
+          >
+            <i class="fa-solid fa-eye"></i>
+          </button>
+          <button
+            type="button"
+            (click)="editPost(post.id)"
+            class="btn btn-primary"
+          >
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button
+            type="button"
+            (click)="deletePost(post.id)"
+            class="btn btn-danger"
+          >
+            <i class="fa-solid fa-delete-left"></i>
+          </button>
+        </div>
       </td>
     </tr>
   </table>
 </div>
+
+<i class="fa-solid fa-plus"></i>
